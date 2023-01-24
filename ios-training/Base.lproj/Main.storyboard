@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-ZZ-laV">
                                 <rect key="frame" x="98.333333333333329" y="317.66666666666669" width="196.33333333333337" height="216.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-bG-lf6" userLabel="Blue">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-bG-lf6" userLabel="Blue">
                                         <rect key="frame" x="0.0" y="196.33333333333331" width="98.333333333333329" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Blue"/>
@@ -32,7 +32,7 @@
                                             <constraint firstAttribute="width" secondItem="yCT-0o-CSI" secondAttribute="height" multiplier="1:1" id="Gn2-yO-fAD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-hV-Rnr" userLabel="Red">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-hV-Rnr" userLabel="Red">
                                         <rect key="frame" x="98.333333333333314" y="196.33333333333331" width="98" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Red"/>
@@ -63,6 +63,9 @@
                                 <rect key="frame" x="196.66666666666666" y="614.33333333333337" width="97.999999999999972" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ysb-6n-x2e"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -80,6 +83,9 @@
                             <constraint firstItem="5Wt-Ba-BNy" firstAttribute="width" secondItem="Tjh-bG-lf6" secondAttribute="width" id="zZK-c0-gE5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="yCT-0o-CSI" id="N0E-3e-8L5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
