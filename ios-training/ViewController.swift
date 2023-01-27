@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reloadButton(_ sender: UIButton) {
-        do {
-            guard let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo") else { return }
+        Task {
+            guard let result = await fetchWeather() else { return }
             
             switch result {
             case "sunny":
@@ -35,6 +35,11 @@ class ViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    func fetchWeather() async -> String? {
+        let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo")
+        return result
     }
     
 }
