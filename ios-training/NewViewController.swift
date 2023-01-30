@@ -16,7 +16,7 @@ class NewViewController: UIViewController {
     // Viewが表示された時にViewControllerへ画面遷移
     override func viewDidAppear(_ animated: Bool) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyboard.instantiateInitialViewController() as! ViewController
+        guard let nextViewController = storyboard.instantiateInitialViewController() as? ViewController else { return }
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true, completion: nil)
     }
