@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func reloadButton(_ sender: UIButton) {
@@ -35,6 +34,10 @@ class ViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     func fetchWeather() async -> String? {

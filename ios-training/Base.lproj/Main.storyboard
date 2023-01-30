@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -42,7 +43,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="yCT-0o-CSI" secondAttribute="trailing" id="0qi-zq-Bdq"/>
-                                    <constraint firstItem="Tjh-bG-lf6" firstAttribute="leading" secondItem="nl8-ZZ-laV" secondAttribute="leading" id="CEF-fP-Sj8"/>
+                                    <constraint firstItem="Tjh-bG-lf6" firstAttribute="left" secondItem="nl8-ZZ-laV" secondAttribute="left" id="CEF-fP-Sj8"/>
                                     <constraint firstItem="9Lw-hV-Rnr" firstAttribute="width" secondItem="yCT-0o-CSI" secondAttribute="width" multiplier="0.5" id="GTR-M1-nnu"/>
                                     <constraint firstItem="yCT-0o-CSI" firstAttribute="top" secondItem="nl8-ZZ-laV" secondAttribute="top" id="Qfx-jB-Nk5"/>
                                     <constraint firstAttribute="bottom" secondItem="9Lw-hV-Rnr" secondAttribute="bottom" id="T74-8P-kjN"/>
@@ -58,6 +59,9 @@
                                 <rect key="frame" x="98.333333333333343" y="614.33333333333337" width="98.333333333333343" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ncg-45-ZTz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-QW-nLJ">
                                 <rect key="frame" x="196.66666666666666" y="614.33333333333337" width="97.999999999999972" height="34.333333333333371"/>
