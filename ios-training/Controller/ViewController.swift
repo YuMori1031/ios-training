@@ -8,6 +8,10 @@
 import UIKit
 import YumemiWeather
 
+protocol WeatherDelegate {
+    func loadWeather()
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -15,8 +19,30 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    deinit {
+        print("deinit ViewController")
+    }
 
     @IBAction func reloadButton(_ sender: UIButton) {
+        let weatherModel = WeatherModel()
+        weatherModel.delegate = self
+        weatherModel.fetchWeatherAPI()
+    }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+}
+
+extension ViewController: WeatherDelegate {
+    func loadWeather() {
+        func fetchWeather() async -> String? {
+            let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo")
+            return result
+        }
+        
         Task {
             guard let result = await fetchWeather() else { return }
             
@@ -35,15 +61,4 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func closeButton(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
-    
-    func fetchWeather() async -> String? {
-        let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo")
-        return result
-    }
-    
 }
-
