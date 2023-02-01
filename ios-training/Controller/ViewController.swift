@@ -8,16 +8,19 @@
 import UIKit
 import YumemiWeather
 
-protocol WeatherDelegate {
-    func loadWeather()
+protocol WeatherDelegate: AnyObject {
+    func loadWeather(_ result: String)
 }
 
 class ViewController: UIViewController {
+    
+    var weatherModel = WeatherModel()
     
     @IBOutlet weak var weatherImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        weatherModel.delegate = self
     }
     
     deinit {
@@ -25,9 +28,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reloadButton(_ sender: UIButton) {
-        let weatherModel = WeatherModel()
-        weatherModel.delegate = self
-        weatherModel.fetchWeatherAPI()
+        Task { @MainActor in
+            await weatherModel.fetchWeather()
+        }
     }
     
     @IBAction func closeButton(_ sender: UIButton) {
@@ -37,15 +40,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: WeatherDelegate {
-    func loadWeather() {
-        func fetchWeather() async -> String? {
-            let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo")
-            return result
-        }
-        
+    func loadWeather(_ result: String) {
         Task {
-            guard let result = await fetchWeather() else { return }
-            
             switch result {
             case "sunny":
                 weatherImageView.image = UIImage(named: "Sunny")

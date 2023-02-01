@@ -9,11 +9,11 @@ import Foundation
 import YumemiWeather
 
 class WeatherModel {
-    var delegate: WeatherDelegate? = nil
+    weak var delegate: WeatherDelegate? = nil
     
-    func fetchWeatherAPI() {
-        if let weatherDelegate = self.delegate {
-            weatherDelegate.loadWeather()
-        }
+    func fetchWeather() async {
+        guard let weatherDelegate = self.delegate else { return }
+        guard let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo") else { return }
+        weatherDelegate.loadWeather(result)
     }
 }
