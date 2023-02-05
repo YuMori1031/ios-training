@@ -9,7 +9,7 @@ import UIKit
 import YumemiWeather
 
 protocol WeatherDelegate: AnyObject {
-    func loadWeather(_ result: String)
+    func loadWeather(_ result: Result<String, YumemiWeatherError>)
 }
 
 class ViewController: UIViewController {
@@ -40,20 +40,35 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: WeatherDelegate {
-    func loadWeather(_ result: String) {
+    func loadWeather(_ result: Result<String, YumemiWeatherError>) {
         Task {
             switch result {
-            case "sunny":
-                weatherImageView.image = UIImage(named: "Sunny")
-                weatherImageView.tintColor = .red
-            case "cloudy":
-                weatherImageView.image = UIImage(named: "Cloudy")
-                weatherImageView.tintColor = .gray
-            case "rainy":
-                weatherImageView.image = UIImage(named: "Rainy")
-                weatherImageView.tintColor = .blue
-            default:
-                return
+            case .success(let string):
+                switch string {
+                case "sunny":
+                    weatherImageView.image = UIImage(named: "Sunny")
+                    weatherImageView.tintColor = .red
+                case "cloudy":
+                    weatherImageView.image = UIImage(named: "Cloudy")
+                    weatherImageView.tintColor = .gray
+                case "rainy":
+                    weatherImageView.image = UIImage(named: "Rainy")
+                    weatherImageView.tintColor = .blue
+                default:
+                    return
+                }
+            case .failure(let error):
+                let errorMessage: String
+                switch error {
+                case .invalidParameterError:
+                    errorMessage = "invalidParameterError"
+                case .unknownError:
+                    errorMessage = "unknownError"
+                }
+                
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
             }
         }
     }

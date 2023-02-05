@@ -13,7 +13,8 @@ class WeatherModel {
     
     func fetchWeather() async {
         guard let weatherDelegate = self.delegate else { return }
-        guard let result = try? YumemiWeather.fetchWeatherCondition(at: "tokyo") else { return }
+        let result = Result { try YumemiWeather.fetchWeatherCondition(at: "tokyo") }
+            .mapError { $0 as! YumemiWeatherError }
         weatherDelegate.loadWeather(result)
     }
 }
