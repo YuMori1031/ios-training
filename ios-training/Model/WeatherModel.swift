@@ -13,8 +13,30 @@ class WeatherModel {
     
     func fetchWeather() async {
         guard let weatherDelegate = self.delegate else { return }
-        let result = Result { try YumemiWeather.fetchWeatherCondition(at: "tokyo") }
-            .mapError { $0 as! YumemiWeatherError }
-        weatherDelegate.loadWeather(result)
+        let request = Request(area: "tokyo", date: Date())
+        let response = Result { try jsonDecode(from: YumemiWeather.fetchWeather(jsonEncode(from: request))) }.mapError{ $0 as! YumemiWeatherError }
+        weatherDelegate.loadWeather(response)
+    }
+    
+    private let df: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return df
+    }()
+    
+    private func jsonEncode(from request: Request) throws -> String {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .formatted(df)
+        let requestData = try encoder.encode(request)
+        guard let requestJson = String(data: requestData, encoding: .utf8) else { throw YumemiWeatherError.invalidParameterError }
+        return requestJson
+    }
+    
+    private func jsonDecode(from responseJson: String) throws -> Response {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(df)
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        guard let responseData = responseJson.data(using: .utf8) else { throw YumemiWeatherError.invalidParameterError }
+        return try decoder.decode(Response.self, from: responseData)
     }
 }

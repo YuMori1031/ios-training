@@ -9,7 +9,7 @@ import UIKit
 import YumemiWeather
 
 protocol WeatherDelegate: AnyObject {
-    func loadWeather(_ result: Result<String, YumemiWeatherError>)
+    func loadWeather(_ result: Result<Response, YumemiWeatherError>)
 }
 
 class ViewController: UIViewController {
@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var weatherModel = WeatherModel()
     
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var minTemperature: UILabel!
+    @IBOutlet weak var maxTemperature: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,23 +42,24 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: WeatherDelegate {
-    func loadWeather(_ result: Result<String, YumemiWeatherError>) {
+    func loadWeather(_ result: Result<Response, YumemiWeatherError>) {
         Task {
             switch result {
-            case .success(let string):
-                switch string {
-                case "sunny":
-                    weatherImageView.image = UIImage(named: "Sunny")
+            case .success(let response):
+                weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
+                
+                switch response.weatherCondition {
+                case .sunny:
                     weatherImageView.tintColor = .red
-                case "cloudy":
-                    weatherImageView.image = UIImage(named: "Cloudy")
+                case .cloudy:
                     weatherImageView.tintColor = .gray
-                case "rainy":
-                    weatherImageView.image = UIImage(named: "Rainy")
+                case .rainy:
                     weatherImageView.tintColor = .blue
-                default:
-                    return
                 }
+                
+                minTemperature.text = String(response.minTemperature)
+                maxTemperature.text = String(response.maxTemperature)
+                
             case .failure(let error):
                 let errorMessage: String
                 switch error {

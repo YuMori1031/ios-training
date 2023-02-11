@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-ZZ-laV">
                                 <rect key="frame" x="98.333333333333329" y="317.66666666666669" width="196.33333333333337" height="216.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-bG-lf6" userLabel="Blue">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-bG-lf6" userLabel="minTemperature">
                                         <rect key="frame" x="0.0" y="196.33333333333331" width="98.333333333333329" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Blue"/>
@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="width" secondItem="yCT-0o-CSI" secondAttribute="height" multiplier="1:1" id="Gn2-yO-fAD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-hV-Rnr" userLabel="Red">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-hV-Rnr" userLabel="maxTemperature">
                                         <rect key="frame" x="98.333333333333314" y="196.33333333333331" width="98" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="Red"/>
@@ -88,6 +88,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxTemperature" destination="9Lw-hV-Rnr" id="Mgm-UB-Has"/>
+                        <outlet property="minTemperature" destination="Tjh-bG-lf6" id="Egh-qM-lpO"/>
                         <outlet property="weatherImageView" destination="yCT-0o-CSI" id="N0E-3e-8L5"/>
                     </connections>
                 </viewController>
