@@ -48,15 +48,13 @@ extension ViewController: WeatherDelegate {
             case .success(let response):
                 weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
                 
-                switch response.weatherCondition.rawValue {
-                case "sunny":
+                switch response.weatherCondition {
+                case .sunny:
                     weatherImageView.tintColor = .red
-                case "cloudy":
+                case .cloudy:
                     weatherImageView.tintColor = .gray
-                case "rainy":
+                case .rainy:
                     weatherImageView.tintColor = .blue
-                default:
-                    return
                 }
                 
                 minTemperature.text = String(response.minTemperature)
