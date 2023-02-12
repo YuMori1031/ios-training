@@ -11,11 +11,13 @@ import YumemiWeather
 class WeatherModel {
     weak var delegate: WeatherDelegate? = nil
     
-    func fetchWeather() async {
+    func fetchWeather() {
         guard let weatherDelegate = self.delegate else { return }
         let request = Request(area: "tokyo", date: Date())
-        let response = Result { try jsonDecode(from: YumemiWeather.fetchWeather(jsonEncode(from: request))) }.mapError{ $0 as! YumemiWeatherError }
-        weatherDelegate.loadWeather(response)
+        DispatchQueue.global().async {
+            let response = Result { try self.jsonDecode(from: YumemiWeather.fetchWeather(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
+            weatherDelegate.loadWeather(response)
+        }
     }
     
     private let df: DateFormatter = {
