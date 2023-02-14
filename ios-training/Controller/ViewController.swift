@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherModel.delegate = self
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.weatherModel.fetchWeather()
+        }
     }
     
     deinit {
@@ -30,9 +33,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reloadButton(_ sender: UIButton) {
-        Task { @MainActor in
-            await weatherModel.fetchWeather()
-        }
+        weatherModel.fetchWeather()
     }
     
     @IBAction func closeButton(_ sender: UIButton) {
@@ -43,22 +44,22 @@ class ViewController: UIViewController {
 
 extension ViewController: WeatherDelegate {
     func loadWeather(_ result: Result<Response, YumemiWeatherError>) {
-        Task {
+        DispatchQueue.main.async {
             switch result {
             case .success(let response):
-                weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
+                self.weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
                 
                 switch response.weatherCondition {
                 case .sunny:
-                    weatherImageView.tintColor = .red
+                    self.weatherImageView.tintColor = .red
                 case .cloudy:
-                    weatherImageView.tintColor = .gray
+                    self.weatherImageView.tintColor = .gray
                 case .rainy:
-                    weatherImageView.tintColor = .blue
+                    self.weatherImageView.tintColor = .blue
                 }
                 
-                minTemperature.text = String(response.minTemperature)
-                maxTemperature.text = String(response.maxTemperature)
+                self.minTemperature.text = String(response.minTemperature)
+                self.maxTemperature.text = String(response.maxTemperature)
                 
             case .failure(let error):
                 let errorMessage: String
@@ -71,7 +72,7 @@ extension ViewController: WeatherDelegate {
                 
                 let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-                present(alert, animated: true)
+                self.present(alert, animated: true)
             }
         }
     }
