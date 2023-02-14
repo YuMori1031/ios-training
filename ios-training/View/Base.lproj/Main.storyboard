@@ -71,23 +71,31 @@
                                     <action selector="reloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ysb-6n-x2e"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="h4x-Nu-TaB">
+                                <rect key="frame" x="0.0" y="586" width="393" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OnU-QW-nLJ" firstAttribute="top" secondItem="9Lw-hV-Rnr" secondAttribute="bottom" constant="80" id="0g3-oS-rzU"/>
                             <constraint firstItem="OnU-QW-nLJ" firstAttribute="centerX" secondItem="9Lw-hV-Rnr" secondAttribute="centerX" id="23O-j4-LqA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h4x-Nu-TaB" secondAttribute="trailing" id="6ae-Nd-ROd"/>
                             <constraint firstItem="5Wt-Ba-BNy" firstAttribute="centerX" secondItem="Tjh-bG-lf6" secondAttribute="centerX" id="6ls-ET-nwG"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="77F-8a-HqI"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="ARi-h9-U7p"/>
                             <constraint firstItem="OnU-QW-nLJ" firstAttribute="centerY" secondItem="5Wt-Ba-BNy" secondAttribute="centerY" id="Fil-7c-l2Z"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LEc-BL-NLy"/>
                             <constraint firstItem="5Wt-Ba-BNy" firstAttribute="top" secondItem="Tjh-bG-lf6" secondAttribute="bottom" constant="80" id="Tyc-kY-GIY"/>
+                            <constraint firstItem="5Wt-Ba-BNy" firstAttribute="top" secondItem="h4x-Nu-TaB" secondAttribute="bottom" constant="8.3300000000000001" id="eyA-zW-Umv"/>
+                            <constraint firstItem="h4x-Nu-TaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ffi-LY-7ig"/>
                             <constraint firstItem="OnU-QW-nLJ" firstAttribute="width" secondItem="9Lw-hV-Rnr" secondAttribute="width" id="yeQ-SX-SZC"/>
                             <constraint firstItem="5Wt-Ba-BNy" firstAttribute="width" secondItem="Tjh-bG-lf6" secondAttribute="width" id="zZK-c0-gE5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="h4x-Nu-TaB" id="RzX-5U-JbU"/>
                         <outlet property="maxTemperature" destination="9Lw-hV-Rnr" id="Mgm-UB-Has"/>
                         <outlet property="minTemperature" destination="Tjh-bG-lf6" id="Egh-qM-lpO"/>
                         <outlet property="weatherImageView" destination="yCT-0o-CSI" id="N0E-3e-8L5"/>
