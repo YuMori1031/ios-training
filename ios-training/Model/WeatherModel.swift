@@ -9,14 +9,11 @@ import Foundation
 import YumemiWeather
 
 class WeatherModel {
-    weak var delegate: WeatherDelegate? = nil
-    
-    func fetchWeather() {
-        guard let weatherDelegate = self.delegate else { return }
+    func fetchWeather(completion: @escaping (Result<Response, YumemiWeatherError>) -> Void) {
         let request = Request(area: "tokyo", date: Date())
         DispatchQueue.global().async {
             let response = Result { try self.jsonDecode(from: YumemiWeather.syncFetchWeather(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
-            weatherDelegate.loadWeather(response)
+            completion(response)
         }
     }
     
