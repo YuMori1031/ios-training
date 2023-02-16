@@ -15,7 +15,7 @@ class WeatherModel {
         guard let weatherDelegate = self.delegate else { return }
         let request = Request(area: "tokyo", date: Date())
         DispatchQueue.global().async {
-            let response = Result { try self.jsonDecode(from: YumemiWeather.fetchWeather(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
+            let response = Result { try self.jsonDecode(from: YumemiWeather.syncFetchWeather(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
             weatherDelegate.loadWeather(response)
         }
     }

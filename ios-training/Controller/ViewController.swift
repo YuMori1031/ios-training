@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTemperature: UILabel!
     @IBOutlet weak var maxTemperature: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reloadButton(_ sender: UIButton) {
+        activityIndicator.startAnimating()
         weatherModel.fetchWeather()
     }
     
@@ -45,6 +47,7 @@ class ViewController: UIViewController {
 extension ViewController: WeatherDelegate {
     func loadWeather(_ result: Result<Response, YumemiWeatherError>) {
         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
             switch result {
             case .success(let response):
                 self.weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
