@@ -20,11 +20,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
-            self?.activityIndicator.startAnimating()
-            self?.weatherModel.fetchWeather { result in
+            guard let self = self else { return }
+            self.activityIndicator.startAnimating()
+            self.weatherModel.fetchWeather { result in
                 DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    self?.receiveWeather(result: result)
+                    self.activityIndicator.stopAnimating()
+                    self.receiveWeather(result: result)
                 }
             }
         }
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    func receiveWeather(result: Result<Response, YumemiWeatherError>) {
+    private func receiveWeather(result: Result<Response, YumemiWeatherError>) {
         switch result {
         case .success(let response):
             self.weatherImageView.image = UIImage(named: response.weatherCondition.rawValue)
