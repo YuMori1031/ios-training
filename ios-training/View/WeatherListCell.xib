@@ -25,19 +25,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-Hp-H3p">
-                        <rect key="frame" x="110" y="10" width="73.333333333333314" height="21"/>
+                        <rect key="frame" x="110" y="9.9999999999999982" width="72.333333333333314" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-46-s3U" userLabel="minTemperature">
-                        <rect key="frame" x="110" y="46" width="15.333333333333329" height="20.333333333333329"/>
+                        <rect key="frame" x="110" y="45.333333333333336" width="15.333333333333329" height="20.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="Blue"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmU-UF-Wwu" userLabel="maxTemperature">
-                        <rect key="frame" x="155.33333333333334" y="46" width="15.333333333333343" height="20.333333333333329"/>
+                        <rect key="frame" x="155.33333333333334" y="45.333333333333336" width="15.333333333333343" height="20.333333333333336"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="Red"/>
                         <nil key="highlightedColor"/>
