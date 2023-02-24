@@ -13,10 +13,10 @@ class NewViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // Viewが表示された時にViewControllerへ画面遷移
+    // Viewが表示された時にWeatherListViewControllerへ画面遷移
     override func viewDidAppear(_ animated: Bool) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextViewController = storyboard.instantiateInitialViewController() as? ViewController else { return }
+        let storyboard = UIStoryboard(name: "WeatherListView", bundle: nil)
+        guard let nextViewController = storyboard.instantiateInitialViewController() as? WeatherListViewController else { return }
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true, completion: nil)
     }

@@ -19,6 +19,10 @@
 		20AC2715299438D600F6FEA4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC2714299438D600F6FEA4 /* Response.swift */; };
 		20AC27172994390700F6FEA4 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC27162994390700F6FEA4 /* Weather.swift */; };
 		20C9CE212986306000638EAC /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9CE202986306000638EAC /* NewViewController.swift */; };
+		8D7E11A129A555C7008B7DB4 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E11A029A555C7008B7DB4 /* WeatherListViewController.swift */; };
+		8D7E11A529A556C2008B7DB4 /* WeatherListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D7E11A429A556C2008B7DB4 /* WeatherListView.storyboard */; };
+		8D7E11A829A55EF3008B7DB4 /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E11A629A55EF3008B7DB4 /* WeatherListCell.swift */; };
+		8D7E11A929A55EF3008B7DB4 /* WeatherListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7E11A729A55EF3008B7DB4 /* WeatherListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		20AC2714299438D600F6FEA4 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		20AC27162994390700F6FEA4 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		20C9CE202986306000638EAC /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		8D7E11A029A555C7008B7DB4 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
+		8D7E11A429A556C2008B7DB4 /* WeatherListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherListView.storyboard; sourceTree = "<group>"; };
+		8D7E11A629A55EF3008B7DB4 /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
+		8D7E11A729A55EF3008B7DB4 /* WeatherListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,8 @@
 			children = (
 				20C9CE202986306000638EAC /* NewViewController.swift */,
 				2014E4DF297DC3EC0005CE7B /* ViewController.swift */,
+				8D7E11A029A555C7008B7DB4 /* WeatherListViewController.swift */,
+				8D7E11A629A55EF3008B7DB4 /* WeatherListCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -102,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				2014E4E1297DC3EC0005CE7B /* Main.storyboard */,
+				8D7E11A429A556C2008B7DB4 /* WeatherListView.storyboard */,
+				8D7E11A729A55EF3008B7DB4 /* WeatherListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +192,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7E11A529A556C2008B7DB4 /* WeatherListView.storyboard in Resources */,
 				2014E4E8297DC3EE0005CE7B /* LaunchScreen.storyboard in Resources */,
+				8D7E11A929A55EF3008B7DB4 /* WeatherListCell.xib in Resources */,
 				2014E4E5297DC3EE0005CE7B /* Assets.xcassets in Resources */,
 				2014E4E3297DC3EC0005CE7B /* Main.storyboard in Resources */,
 			);
@@ -197,7 +211,9 @@
 				2014E4E0297DC3EC0005CE7B /* ViewController.swift in Sources */,
 				20AC270F29942B4700F6FEA4 /* Request.swift in Sources */,
 				20AC27172994390700F6FEA4 /* Weather.swift in Sources */,
+				8D7E11A829A55EF3008B7DB4 /* WeatherListCell.swift in Sources */,
 				2014E4DC297DC3EC0005CE7B /* AppDelegate.swift in Sources */,
+				8D7E11A129A555C7008B7DB4 /* WeatherListViewController.swift in Sources */,
 				2014E4DE297DC3EC0005CE7B /* SceneDelegate.swift in Sources */,
 				20C9CE212986306000638EAC /* NewViewController.swift in Sources */,
 				2086B56E29886A2C004F060C /* WeatherModel.swift in Sources */,

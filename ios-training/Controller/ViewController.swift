@@ -9,7 +9,7 @@ import UIKit
 import YumemiWeather
 
 class ViewController: UIViewController {
-    
+/*
     var weatherModel = WeatherModel()
     
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -80,5 +80,5 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
+ */
 }
