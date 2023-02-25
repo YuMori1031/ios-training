@@ -9,8 +9,8 @@ import Foundation
 import YumemiWeather
 
 class WeatherModel {
-    func fetchWeather(completion: ((Result<[Response], YumemiWeatherError>) -> Void)?) {
-        let request = Request(areas: ["Tokyo"], date: Date())
+    func fetchWeather(city: [String], completion: ((Result<[Response], YumemiWeatherError>) -> Void)?) {
+        let request = Request(areas: city, date: Date())
         DispatchQueue.global().async {
             let response = Result { try self.jsonDecode(from: YumemiWeather.syncFetchWeatherList(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
             if let completion = completion {
