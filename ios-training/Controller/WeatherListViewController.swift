@@ -99,8 +99,6 @@ extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: WeatherListCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! WeatherListCell
         
-        guard weatherList.count > 0 else { return cell }
-        
         cell.weatherImageView.image = UIImage(named: weatherList[indexPath.row].info.weatherCondition.rawValue)
         
         switch weatherList[indexPath.row].info.weatherCondition {
@@ -121,7 +119,7 @@ extension WeatherListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return weatherList.count
     }
 }
 
