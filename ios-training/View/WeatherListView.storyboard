@@ -31,13 +31,14 @@
                             <constraint firstItem="ZIb-Er-dNr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hwW-QC-I6g"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Jry-kx-5qg"/>
                     <connections>
                         <outlet property="tableView" destination="ZIb-Er-dNr" id="Wf3-rL-PUI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95.419847328244273" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="2684.7328244274809" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

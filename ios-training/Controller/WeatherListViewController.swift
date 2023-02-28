@@ -31,6 +31,11 @@ class WeatherListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.fetchweatherList()
+        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -42,6 +47,16 @@ class WeatherListViewController: UIViewController {
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     @objc private func onRefresh(_ sender: AnyObject) {
@@ -125,6 +140,12 @@ extension WeatherListViewController: UITableViewDataSource {
 
 extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // セル選択時に詳細画面に遷移するコードを記述予定
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let storyboard = UIStoryboard(name: "WeatherDetailView", bundle: nil)
+        guard let nextViewController = storyboard.instantiateInitialViewController() as? WeatherDetailViewController else { return }
+        
+        nextViewController.weatherList = weatherList[indexPath.row] // 詳細画面への値渡し
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ios_training" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherDetailViewController" customModule="ios_training" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,53 +49,23 @@
                                     <constraint firstAttribute="bottom" secondItem="9Lw-hV-Rnr" secondAttribute="bottom" id="T74-8P-kjN"/>
                                     <constraint firstItem="yCT-0o-CSI" firstAttribute="leading" secondItem="nl8-ZZ-laV" secondAttribute="leading" id="Vv2-uj-qAW"/>
                                     <constraint firstItem="9Lw-hV-Rnr" firstAttribute="top" secondItem="yCT-0o-CSI" secondAttribute="bottom" id="c1n-uJ-Snf"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Lw-hV-Rnr" secondAttribute="trailing" id="hdO-A2-pJS"/>
                                     <constraint firstItem="Tjh-bG-lf6" firstAttribute="top" secondItem="yCT-0o-CSI" secondAttribute="bottom" id="jDX-tJ-fNY"/>
                                     <constraint firstAttribute="bottom" secondItem="Tjh-bG-lf6" secondAttribute="bottom" id="pQt-J4-Xee"/>
                                     <constraint firstItem="Tjh-bG-lf6" firstAttribute="trailing" secondItem="9Lw-hV-Rnr" secondAttribute="leading" id="qoc-OX-xe4"/>
                                     <constraint firstItem="Tjh-bG-lf6" firstAttribute="width" secondItem="yCT-0o-CSI" secondAttribute="width" multiplier="0.5" id="v0L-eA-xm9"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wt-Ba-BNy">
-                                <rect key="frame" x="98.333333333333343" y="614.33333333333337" width="98.333333333333343" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
-                                <connections>
-                                    <action selector="closeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ncg-45-ZTz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-QW-nLJ">
-                                <rect key="frame" x="196.66666666666666" y="614.33333333333337" width="97.999999999999972" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reload"/>
-                                <connections>
-                                    <action selector="reloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ysb-6n-x2e"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="h4x-Nu-TaB">
-                                <rect key="frame" x="0.0" y="586" width="393" height="20"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OnU-QW-nLJ" firstAttribute="top" secondItem="9Lw-hV-Rnr" secondAttribute="bottom" constant="80" id="0g3-oS-rzU"/>
-                            <constraint firstItem="OnU-QW-nLJ" firstAttribute="centerX" secondItem="9Lw-hV-Rnr" secondAttribute="centerX" id="23O-j4-LqA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h4x-Nu-TaB" secondAttribute="trailing" id="6ae-Nd-ROd"/>
-                            <constraint firstItem="5Wt-Ba-BNy" firstAttribute="centerX" secondItem="Tjh-bG-lf6" secondAttribute="centerX" id="6ls-ET-nwG"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="77F-8a-HqI"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="ARi-h9-U7p"/>
-                            <constraint firstItem="OnU-QW-nLJ" firstAttribute="centerY" secondItem="5Wt-Ba-BNy" secondAttribute="centerY" id="Fil-7c-l2Z"/>
                             <constraint firstItem="nl8-ZZ-laV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LEc-BL-NLy"/>
-                            <constraint firstItem="5Wt-Ba-BNy" firstAttribute="top" secondItem="Tjh-bG-lf6" secondAttribute="bottom" constant="80" id="Tyc-kY-GIY"/>
-                            <constraint firstItem="5Wt-Ba-BNy" firstAttribute="top" secondItem="h4x-Nu-TaB" secondAttribute="bottom" constant="8.3300000000000001" id="eyA-zW-Umv"/>
-                            <constraint firstItem="h4x-Nu-TaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ffi-LY-7ig"/>
-                            <constraint firstItem="OnU-QW-nLJ" firstAttribute="width" secondItem="9Lw-hV-Rnr" secondAttribute="width" id="yeQ-SX-SZC"/>
-                            <constraint firstItem="5Wt-Ba-BNy" firstAttribute="width" secondItem="Tjh-bG-lf6" secondAttribute="width" id="zZK-c0-gE5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="h4x-Nu-TaB" id="RzX-5U-JbU"/>
                         <outlet property="maxTemperature" destination="9Lw-hV-Rnr" id="Mgm-UB-Has"/>
                         <outlet property="minTemperature" destination="Tjh-bG-lf6" id="Egh-qM-lpO"/>
                         <outlet property="weatherImageView" destination="yCT-0o-CSI" id="N0E-3e-8L5"/>
