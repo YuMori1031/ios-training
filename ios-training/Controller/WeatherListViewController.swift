@@ -24,9 +24,22 @@ class WeatherListViewController: UIViewController {
     }
     
     var indicator = UIActivityIndicatorView()
-    let loadingView = UIView(frame: UIScreen.main.bounds)
     
-    @IBOutlet weak var tableView: UITableView!
+    var loadingView = UIView(frame: UIScreen.main.bounds) {
+        didSet {
+            loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        }
+    }
+    
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(UINib(nibName: "WeatherListCell", bundle: nil), forCellReuseIdentifier: "Cell")
+            tableView.refreshControl = UIRefreshControl()
+            tableView.refreshControl?.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+            tableView.dataSource = self
+            tableView.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +49,9 @@ class WeatherListViewController: UIViewController {
             self.fetchweatherList()
         }
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         showIndicator()
         
         fetchweatherList()
-        
-        tableView.register(UINib(nibName: "WeatherListCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,9 +107,7 @@ class WeatherListViewController: UIViewController {
         indicator.style = .large
         indicator.color = .white
         indicator.hidesWhenStopped = true
-        
-        loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        
+        //loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         loadingView.addSubview(indicator)
     }
     
@@ -112,7 +115,7 @@ class WeatherListViewController: UIViewController {
 
 extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: WeatherListCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! WeatherListCell
+        guard let cell: WeatherListCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as?  WeatherListCell else { return UITableViewCell() }
         
         cell.weatherImageView.image = UIImage(named: weatherList[indexPath.row].info.weatherCondition.rawValue)
         
