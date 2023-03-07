@@ -8,8 +8,13 @@
 import Foundation
 
 struct Response: Decodable {
-    let maxTemperature: Int
-    let minTemperature: Int
-    let date: Date
-    let weatherCondition: Weather
+    let area: String
+    let info: Info
+}
+
+struct Info: Decodable {
+    var maxTemperature: Int
+    var minTemperature: Int
+    var date: Date
+    var weatherCondition: Weather
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 struct Request: Encodable {
-    let area: String
+    let areas: [String]
     let date: Date
 }

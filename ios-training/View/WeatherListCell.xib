@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="84" id="KGk-i7-Jjw" customClass="WeatherListCell" customModule="ios_training" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ft3-vP-pyp">
+                        <rect key="frame" x="10" y="10" width="70" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="NMM-jt-M28"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-Hp-H3p">
+                        <rect key="frame" x="110" y="9.9999999999999982" width="72.333333333333314" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-46-s3U" userLabel="minTemperature">
+                        <rect key="frame" x="110" y="45.333333333333336" width="15.333333333333329" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="Blue"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmU-UF-Wwu" userLabel="maxTemperature">
+                        <rect key="frame" x="155.33333333333334" y="45.333333333333336" width="15.333333333333343" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="Red"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6e2-46-s3U" firstAttribute="leading" secondItem="ft3-vP-pyp" secondAttribute="trailing" constant="30" id="IGE-9L-Qqj"/>
+                    <constraint firstItem="pmU-UF-Wwu" firstAttribute="leading" secondItem="6e2-46-s3U" secondAttribute="trailing" constant="30" id="JWs-az-tBP"/>
+                    <constraint firstItem="Fgf-Hp-H3p" firstAttribute="leading" secondItem="ft3-vP-pyp" secondAttribute="trailing" constant="30" id="OKG-sc-ipN"/>
+                    <constraint firstItem="pmU-UF-Wwu" firstAttribute="top" secondItem="Fgf-Hp-H3p" secondAttribute="bottom" constant="15" id="f6B-oT-qOt"/>
+                    <constraint firstItem="6e2-46-s3U" firstAttribute="top" secondItem="Fgf-Hp-H3p" secondAttribute="bottom" constant="15" id="rQ0-U6-Tgq"/>
+                    <constraint firstItem="Fgf-Hp-H3p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sTG-10-hEE"/>
+                    <constraint firstItem="ft3-vP-pyp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="vNc-7y-FGe"/>
+                    <constraint firstItem="ft3-vP-pyp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vgU-ou-l0B"/>
+                    <constraint firstAttribute="bottom" secondItem="ft3-vP-pyp" secondAttribute="bottom" constant="10" id="vjn-SZ-eg6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cityName" destination="Fgf-Hp-H3p" id="p8a-SY-tLO"/>
+                <outlet property="maxTemperature" destination="pmU-UF-Wwu" id="zht-xb-Eda"/>
+                <outlet property="minTemperature" destination="6e2-46-s3U" id="5rT-bM-MQ8"/>
+                <outlet property="weatherImageView" destination="ft3-vP-pyp" id="3Bp-Xe-Qig"/>
+            </connections>
+            <point key="canvasLocation" x="126.71755725190839" y="2.8169014084507045"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Blue">
+            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

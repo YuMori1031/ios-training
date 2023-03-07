@@ -9,10 +9,10 @@ import Foundation
 import YumemiWeather
 
 class WeatherModel {
-    func fetchWeather(completion: ((Result<Response, YumemiWeatherError>) -> Void)?) {
-        let request = Request(area: "tokyo", date: Date())
+    func fetchWeather(city: [String], completion: ((Result<[Response], YumemiWeatherError>) -> Void)?) {
+        let request = Request(areas: city, date: Date())
         DispatchQueue.global().async {
-            let response = Result { try self.jsonDecode(from: YumemiWeather.syncFetchWeather(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
+            let response = Result { try self.jsonDecode(from: YumemiWeather.syncFetchWeatherList(self.jsonEncode(from: request))) }.mapError { $0 as! YumemiWeatherError }
             if let completion = completion {
                 completion(response)
             }
@@ -33,11 +33,12 @@ class WeatherModel {
         return requestJson
     }
     
-    private func jsonDecode(from responseJson: String) throws -> Response {
+    private func jsonDecode(from responseJson: String) throws -> [Response] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(df)
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let responseData = responseJson.data(using: .utf8) else { throw YumemiWeatherError.invalidParameterError }
-        return try decoder.decode(Response.self, from: responseData)
+        
+        return try decoder.decode([Response].self, from: responseData)
     }
 }

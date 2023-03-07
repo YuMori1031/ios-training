@@ -10,6 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var navigationController: UINavigationController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,13 +20,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        // 起動画面をNewViewControllerに変更
+        // 起動画面をRootViewControllerに変更
+        let rootViewController: UIViewController = RootViewController()
+        navigationController = UINavigationController(rootViewController: rootViewController)
+        self.window = UIWindow(windowScene: scene as! UIWindowScene)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        /*
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = NewViewController.init()
+            window.rootViewController = RootViewController.init()
             self.window = window
             window.makeKeyAndVisible()
         }
+        */
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
