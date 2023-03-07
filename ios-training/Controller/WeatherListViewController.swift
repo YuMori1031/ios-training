@@ -25,11 +25,11 @@ class WeatherListViewController: UIViewController {
     
     var indicator = UIActivityIndicatorView()
     
-    var loadingView = UIView(frame: UIScreen.main.bounds) {
-        didSet {
-            loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        }
-    }
+    var loadingView = {
+        let view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        return view
+    }()
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -107,7 +107,6 @@ class WeatherListViewController: UIViewController {
         indicator.style = .large
         indicator.color = .white
         indicator.hidesWhenStopped = true
-        //loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         loadingView.addSubview(indicator)
     }
     
